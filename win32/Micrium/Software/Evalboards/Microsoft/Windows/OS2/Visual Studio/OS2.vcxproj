@@ -97,6 +97,8 @@
     <ClCompile Include="graphicTask.c" />
     <ClCompile Include="imageObject.c" />
     <ClCompile Include="inputTask.c" />
+    <ClCompile Include="mapMovingTask.c" />
+    <ClCompile Include="scoreTask.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\uC-CPU\cpu_cache.h" />
@@ -122,6 +124,8 @@
     <ClInclude Include="graphicTask.h" />
     <ClInclude Include="imageObject.h" />
     <ClInclude Include="inputTask.h" />
+    <ClInclude Include="mapMovingTask.h" />
+    <ClInclude Include="scoreTask.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fragImageObject.gl" />

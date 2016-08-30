@@ -76,6 +76,8 @@ static  void  AppTaskStart(void  *p_arg);
 *********************************************************************************************************
 */
 
+int killTheGame = 0;
+
 int  main (void)
 {
     OSInit();                                                   /* Init uC/OS-II.                                       */
