@@ -46,6 +46,9 @@
     <Filter Include="App\GraphicTask\ImageObject">
       <UniqueIdentifier>{511fc38b-e89b-4d9b-874c-afee04ed67b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\DataManager">
+      <UniqueIdentifier>{1a15487c-80e5-4887-8047-4be58e01cd6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -123,6 +126,9 @@
     <ClCompile Include="imageObject.c">
       <Filter>App\GraphicTask\ImageObject</Filter>
     </ClCompile>
+    <ClCompile Include="ArrayList.c">
+      <Filter>App\DataManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -187,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="imageObject.h">
       <Filter>App\GraphicTask\ImageObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayList.h">
+      <Filter>App\DataManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
