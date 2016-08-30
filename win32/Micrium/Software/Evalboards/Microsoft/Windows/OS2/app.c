@@ -52,7 +52,7 @@
 */
 
 static  CPU_STK  AppTaskStartStk[APP_TASK_START_STK_SIZE];
-
+static  CPU_STK  GraphicTasckStk[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -90,6 +90,16 @@ int  main (void)
         (void          *) 0,
         (INT16U         )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
+	OSTaskCreateExt((void(*)(void *))graphicTask,              /* Create the start task                                */
+		(void          *)0,
+		(OS_STK        *)&GraphicTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(INT8U			) GRAPHIC_TASK_PRIO,
+		(INT16U			) GRAPHIC_TASK_PRIO,
+		(OS_STK        *)&GraphicTasckStk[0],
+		(INT32U			) APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U			)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
     OSStart();                                                  /* Start multitasking (i.e. give control to uC/OS-II).  */
 }
 
@@ -122,13 +132,4 @@ static  void  AppTaskStart (void *p_arg)
 #if OS_CFG_STAT_TASK_EN > 0u
     OSStatTaskCPUUsageInit(&err);                               /* Compute CPU capacity with no task running            */
 #endif
-
-   //APP_TRACE_DBG(("uCOS-II is Running...\n\r"));
-
-    while (DEF_ON) {                                            /* Task body, always written as an infinite loop.       */
-        //OSTimeDlyHMSM(0, 0, 1, 0);
-
-         //APP_TRACE_DBG(("Time: %d\n\r", OSTimeGet(&err)));
-    }
-	//system("pause");
 }

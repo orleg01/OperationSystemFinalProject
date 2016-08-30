@@ -40,6 +40,12 @@
     <Filter Include="App\Math">
       <UniqueIdentifier>{7a9ef24b-aca0-4942-92a7-f1382c1517b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\GraphicTask">
+      <UniqueIdentifier>{2913cc4c-862b-40d9-b5d4-8c7eae1c44fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\GraphicTask\ImageObject">
+      <UniqueIdentifier>{511fc38b-e89b-4d9b-874c-afee04ed67b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -111,6 +117,12 @@
     <ClCompile Include="..\Mat3d.c">
       <Filter>App\Math</Filter>
     </ClCompile>
+    <ClCompile Include="graphicTask.c">
+      <Filter>App\GraphicTask</Filter>
+    </ClCompile>
+    <ClCompile Include="imageObject.c">
+      <Filter>App\GraphicTask\ImageObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -170,5 +182,19 @@
     <ClInclude Include="..\Mat3d.h">
       <Filter>App\Math</Filter>
     </ClInclude>
+    <ClInclude Include="graphicTask.h">
+      <Filter>App\GraphicTask</Filter>
+    </ClInclude>
+    <ClInclude Include="imageObject.h">
+      <Filter>App\GraphicTask\ImageObject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vertexImageObject.gl">
+      <Filter>App\GraphicTask\ImageObject</Filter>
+    </None>
+    <None Include="fragImageObject.gl">
+      <Filter>App\GraphicTask\ImageObject</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -55,3 +55,6 @@
 
                                                                 /* --------------------- uC/OS-III -------------------- */
 #include  <os.h>
+
+																/* --------------------- added the graphic task --------*/
+#include "Visual Studio\graphicTask.h"
