@@ -207,12 +207,4 @@
       <Filter>App\Tasks</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="vertexImageObject.gl">
-      <Filter>App\GraphicTask\ImageObject</Filter>
-    </None>
-    <None Include="fragImageObject.gl">
-      <Filter>App\GraphicTask\ImageObject</Filter>
-    </None>
-  </ItemGroup>
 </Project>
