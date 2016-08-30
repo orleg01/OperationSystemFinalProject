@@ -37,6 +37,9 @@
     <Filter Include="uCOS-II\Ports\Win32\Visual Studio">
       <UniqueIdentifier>{d73d7a79-69f6-41ca-9ca6-880310e1b866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Math">
+      <UniqueIdentifier>{7a9ef24b-aca0-4942-92a7-f1382c1517b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -105,6 +108,9 @@
     <ClCompile Include="..\app_hooks.c">
       <Filter>App</Filter>
     </ClCompile>
+    <ClCompile Include="..\Mat3d.c">
+      <Filter>App\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -160,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\uC-CPU\Win32\Visual Studio\cpu.h">
       <Filter>uC/CPU\Win32\Visual Studio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Mat3d.h">
+      <Filter>App\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

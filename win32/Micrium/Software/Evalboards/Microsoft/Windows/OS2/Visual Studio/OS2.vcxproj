@@ -92,6 +92,7 @@
     <ClCompile Include="..\..\BSP\CPU\cpu_bsp.c" />
     <ClCompile Include="..\app.c" />
     <ClCompile Include="..\app_hooks.c" />
+    <ClCompile Include="..\Mat3d.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\uC-CPU\cpu_cache.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="..\cpu_cfg.h" />
     <ClInclude Include="..\includes.h" />
     <ClInclude Include="..\lib_cfg.h" />
+    <ClInclude Include="..\Mat3d.h" />
     <ClInclude Include="..\os_cfg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
