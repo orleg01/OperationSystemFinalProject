@@ -96,6 +96,7 @@
     <ClCompile Include="ArrayList.c" />
     <ClCompile Include="graphicTask.c" />
     <ClCompile Include="imageObject.c" />
+    <ClCompile Include="inputTask.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\uC-CPU\cpu_cache.h" />
@@ -120,6 +121,7 @@
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="graphicTask.h" />
     <ClInclude Include="imageObject.h" />
+    <ClInclude Include="inputTask.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fragImageObject.gl" />

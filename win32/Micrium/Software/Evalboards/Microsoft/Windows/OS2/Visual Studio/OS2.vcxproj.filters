@@ -49,6 +49,9 @@
     <Filter Include="App\DataManager">
       <UniqueIdentifier>{1a15487c-80e5-4887-8047-4be58e01cd6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\Tasks">
+      <UniqueIdentifier>{4bac186a-a3fd-4945-b13b-fd0046233bf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -129,6 +132,9 @@
     <ClCompile Include="ArrayList.c">
       <Filter>App\DataManager</Filter>
     </ClCompile>
+    <ClCompile Include="inputTask.c">
+      <Filter>App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -196,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="ArrayList.h">
       <Filter>App\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="inputTask.h">
+      <Filter>App\Tasks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
