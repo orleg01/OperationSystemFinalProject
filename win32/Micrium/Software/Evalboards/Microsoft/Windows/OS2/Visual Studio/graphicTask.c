@@ -3,29 +3,40 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Mat3d.h"
+#include "imageObject.h"
+
+#define FRAMES_PER_SEC 60
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
-const int FRAMES_PER_SECOND = 60;
+
+const int TIME_OF_FRAME = (1000 / FRAMES_PER_SEC);
+
+extern int killTheGame;
+extern OS_EVENT* waitForWindowToInitilaize;
 
 GLFWwindow* initWindow();
+void clear(GLFWwindow* window);
 
 void graphicTask(void *p_arg)
 {
 	GLFWwindow* window = initWindow();
 	if (window == NULL)
 		return;
+	OSSemPost(waitForWindowToInitilaize);
 
-	// Game loop
-	while (!glfwWindowShouldClose(window))
+	initImageObjectShader();
+	imageObject_t imageObj = initImageObject(0, VEC3(0, 0, 0), 1, 1);
+	// Game Renderer loop
+	while (!glfwWindowShouldClose(window) && !killTheGame)
 	{
-
-		// Swap the screen buffers
-		glfwSwapBuffers(window);
-		OSTimeDlyHMSM(0, 0, 0, 1000 / FRAMES_PER_SECOND);
+		draw(&imageObj);
+		clear(window);
+		OSTimeDlyHMSM(0, 0, 0, TIME_OF_FRAME);
 	}
-
+	killTheGame = 1;
 	// Terminate GLFW, clearing any resources allocated by GLFW.
+	freeShaderImageObject();
 	glfwTerminate();
 }
 
@@ -63,4 +74,12 @@ GLFWwindow* initWindow()
 	glfwGetFramebufferSize(window, &width, &height);
 	glViewport(0, 0, width, height);
 	return window;
+}
+
+void clear(GLFWwindow* window)
+{
+	// Swap the screen buffers
+	glfwSwapBuffers(window);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
 }

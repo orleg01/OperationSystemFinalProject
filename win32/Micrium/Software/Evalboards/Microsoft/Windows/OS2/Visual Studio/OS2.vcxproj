@@ -127,10 +127,6 @@
     <ClInclude Include="mapMovingTask.h" />
     <ClInclude Include="scoreTask.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="fragImageObject.gl" />
-    <None Include="vertexImageObject.gl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
