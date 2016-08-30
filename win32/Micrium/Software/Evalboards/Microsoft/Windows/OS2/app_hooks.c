@@ -103,9 +103,13 @@
 *********************************************************************************************************
 */
 
+#include "Visual Studio\ArrayList.h"
+
+ArrayList* listOfAllTaskTime;
+
 void  App_TaskCreateHook(OS_TCB *ptcb)
 {
-
+	pushItemToEndArrayList(listOfAllTaskTime, ptcb);
 }
 
 /*
@@ -199,12 +203,28 @@ void  App_TaskReturnHook(OS_TCB  *ptcb)
 *********************************************************************************************************
 */
 
+
+int numberOfLastTick = 0;
+int numberOfTimeToAdd;
+int tempTime;
+
+static void helperToFindTheTask(void* rawTask);
+
 #if OS_TASK_SW_HOOK_EN > 0
 void  App_TaskSwHook(void)
 {
+	numberOfTimeToAdd = (tempTime = OSTimeGet()) - numberOfLastTick;
+	
+	OSTCBCur->YKtimeTheOsRun += numberOfTimeToAdd;
 
+	numberOfLastTick = tempTime;
 }
 #endif
+
+
+
+
+
 
 /*
 *********************************************************************************************************

@@ -79,6 +79,8 @@ static  void  AppTaskStart(void  *p_arg);
 *********************************************************************************************************
 */
 
+#include "Visual Studio\ArrayList.h"
+
 int killTheGame = 0;
 
 extern OS_EVENT* newScoreMailBox;
@@ -86,8 +88,14 @@ extern OS_EVENT* whereTheCameraStandsMailBox;
 extern OS_EVENT* waitForWindowToInitilaizeSemaphore;
 extern OS_EVENT* sendIfSpacePressedMailBox;
 
+extern ArrayList* listOfAllTaskTime; // real item in the context switch hook
+
 static void OsEventInit()
 {
+
+	listOfAllTaskTime = createArrayList(); // add task when create in create task hook 
+
+
 	if (newScoreMailBox = (OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
 		if (whereTheCameraStandsMailBox = (OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
 			if (sendIfSpacePressedMailBox = (OSMboxCreate(sendIfSpacePressedMailBox)) != (OS_EVENT *)0)
