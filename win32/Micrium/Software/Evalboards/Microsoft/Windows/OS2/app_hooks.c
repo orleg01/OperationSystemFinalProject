@@ -66,7 +66,7 @@
 *********************************************************************************************************
 */
 
-ArrayList* listOfAllTaskTime;
+extern ArrayList* listOfAllTaskTime;
 int numberOfLastTickContextSwitch = 0;
 int numberOfTimeToAddContextSwitch;
 int tempTimeContextSwitch;

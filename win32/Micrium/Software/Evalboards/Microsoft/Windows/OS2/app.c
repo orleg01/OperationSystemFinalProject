@@ -83,12 +83,12 @@ static  void  AppTaskStart(void  *p_arg);
 
 int killTheGame = 0;
 
-extern OS_EVENT* newScoreMailBox;
-extern OS_EVENT* whereTheCameraStandsMailBox;
-extern OS_EVENT* waitForWindowToInitilaizeSemaphore;
-extern OS_EVENT* sendIfSpacePressedMailBox;
+OS_EVENT* newScoreMailBox;
+OS_EVENT* whereTheCameraStandsMailBox;
+OS_EVENT* waitForWindowToInitilaizeSemaphore;
+OS_EVENT* sendIfSpacePressedMailBox;
 
-extern ArrayList* listOfAllTaskTime; // real item in the context switch hook
+ArrayList* listOfAllTaskTime; // real item in the context switch hook
 
 static void OsEventInit()
 {
@@ -96,9 +96,9 @@ static void OsEventInit()
 	listOfAllTaskTime = createArrayList(); // add task when create in create task hook 
 
 
-	if (newScoreMailBox = (OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
-		if (whereTheCameraStandsMailBox = (OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
-			if (sendIfSpacePressedMailBox = (OSMboxCreate(sendIfSpacePressedMailBox)) != (OS_EVENT *)0)
+	if ((newScoreMailBox = OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
+		if ((whereTheCameraStandsMailBox = OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
+			if ((sendIfSpacePressedMailBox = OSMboxCreate(sendIfSpacePressedMailBox)) != (OS_EVENT *)0)
 				if ((waitForWindowToInitilaizeSemaphore = OSSemCreate(0)) != (OS_EVENT *)0)
 					return;
 
@@ -186,7 +186,7 @@ int  main (void)
 
 static  void  AppTaskStart (void *p_arg)
 {
-    OS_ERR  err;
+    //OS_ERR  err;
 
    (void)p_arg;
 

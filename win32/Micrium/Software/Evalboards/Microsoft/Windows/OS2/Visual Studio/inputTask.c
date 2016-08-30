@@ -7,8 +7,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
 
 
-OS_EVENT* waitForWindowToInitilaizeSemaphore; // init in main value of 0
-OS_EVENT* sendIfSpacePressedMailBox; // Mail box send int 1 if key As Been Clicked
+extern OS_EVENT* waitForWindowToInitilaizeSemaphore; // init in main value of 0
+extern OS_EVENT* sendIfSpacePressedMailBox; // Mail box send int 1 if key As Been Clicked
 
 extern int killTheGame;
 
