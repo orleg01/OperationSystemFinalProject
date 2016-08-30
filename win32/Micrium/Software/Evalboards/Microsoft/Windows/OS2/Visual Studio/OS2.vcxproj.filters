@@ -132,6 +132,9 @@
     <ClCompile Include="ArrayList.c">
       <Filter>App\DataManager</Filter>
     </ClCompile>
+    <ClCompile Include="inputTask.c">
+      <Filter>App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="ArrayList.h">
       <Filter>App\DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="inputTask.h">
+      <Filter>App\Tasks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
