@@ -1,5 +1,6 @@
 
-#include "inputTask.h"
+
+#include "includes.h"
 
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -19,11 +20,11 @@ void inputTask(void** rawWindow)
 	GLFWwindow* window = (GLFWwindow*)rawWindow;
 	INT8U getWindowError;
 
-	OSSemPend(waitForWindowToInitilaizeSemaphore, 0, &getWindowError);
+	OSSemPend(waitForWindowToInitilaizeSemaphore, 0, &getWindowError); // need to delete the sem after using -> on time sem
 
 	if (getWindowError == OS_ERR_NONE)
 	{
-		
+
 		glfwSetKeyCallback(window, key_callback);
 
 		while (!killTheGame)
