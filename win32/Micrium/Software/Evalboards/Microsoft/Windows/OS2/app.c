@@ -39,7 +39,6 @@
 
 #include <includes.h>
 
-
 /*
 *********************************************************************************************************
 *                                             LOCAL DEFINES
@@ -115,7 +114,6 @@ static  void  AppTaskStart (void *p_arg)
 {
     OS_ERR  err;
 
-
    (void)p_arg;
 
     BSP_Init();                                                 /* Initialize BSP functions                             */
@@ -125,11 +123,12 @@ static  void  AppTaskStart (void *p_arg)
     OSStatTaskCPUUsageInit(&err);                               /* Compute CPU capacity with no task running            */
 #endif
 
-    APP_TRACE_DBG(("uCOS-II is Running...\n\r"));
+   //APP_TRACE_DBG(("uCOS-II is Running...\n\r"));
 
     while (DEF_ON) {                                            /* Task body, always written as an infinite loop.       */
-        OSTimeDlyHMSM(0, 0, 1, 0);
+        //OSTimeDlyHMSM(0, 0, 1, 0);
 
-        APP_TRACE_DBG(("Time: %d\n\r", OSTimeGet(&err)));
+         //APP_TRACE_DBG(("Time: %d\n\r", OSTimeGet(&err)));
     }
+	//system("pause");
 }

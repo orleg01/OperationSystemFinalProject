@@ -44,7 +44,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\BSP;..\..\..\..\..\uC-CPU\Win32\Visual Studio;..\..\..\..\..\uCOS-II\Ports\Win32\Visual Studio;..\..\OS2;..\..\..\..\..\uCOS-II\Source;..\..\..\..\..\uC-LIB;..\..\..\..\..\uC-CPU;.\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\BSP;..\..\..\..\..\uC-CPU\Win32\Visual Studio;..\..\..\..\..\uCOS-II\Ports\Win32\Visual Studio;..\..\OS2;..\..\..\..\..\uCOS-II\Source;..\..\..\..\..\uC-LIB;..\..\..\..\..\uC-CPU;.\includes;C:\Users\Orleg\Source\Repos\OperationSystemsFinalProject\win32\Micrium\Software\Evalboards\Microsoft\Windows\OS2\Visual Studio\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
