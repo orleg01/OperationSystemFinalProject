@@ -4,9 +4,9 @@
 
 #define TO_STR(STR) (#STR)
 
-const GLchar vertexShaderSource[] = { #include "vertexImageObject.gl" };
+//const GLchar vertexShaderSource[] = { #include "vertexImageObject.gl" };
 
-const GLchar* fragmentShaderSource = TO_STR(#include "fragImageObject.gl");
+//const GLchar* fragmentShaderSource = TO_STR(#include "fragImageObject.gl");
 
 void draw()
 {
