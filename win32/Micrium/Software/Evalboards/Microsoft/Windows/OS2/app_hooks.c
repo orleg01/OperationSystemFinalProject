@@ -30,7 +30,7 @@
 */
 
 #include <ucos_ii.h>
-
+#include "Visual Studio\ArrayList.h"
 /*
 *********************************************************************************************************
 *                                       EXTERN  GLOBAL VARIABLES
@@ -51,6 +51,8 @@
 *********************************************************************************************************
 */
 
+
+
 /*
 *********************************************************************************************************
 *                                            LOCAL TABLES
@@ -64,6 +66,14 @@
 *********************************************************************************************************
 */
 
+ArrayList* listOfAllTaskTime;
+int numberOfLastTickContextSwitch = 0;
+int numberOfTimeToAddContextSwitch;
+int tempTimeContextSwitch;
+
+int lastTimeOfIdle = 0;
+int currTimeOfIdle;
+
 
 /*
 *********************************************************************************************************
@@ -71,7 +81,7 @@
 *********************************************************************************************************
 */
 
-
+static void showProblamaticTasks(OS_TCB* tcb);
 
 /*
 **********************************************************************************************************
@@ -103,9 +113,6 @@
 *********************************************************************************************************
 */
 
-#include "Visual Studio\ArrayList.h"
-
-ArrayList* listOfAllTaskTime;
 
 void  App_TaskCreateHook(OS_TCB *ptcb)
 {
@@ -145,9 +152,41 @@ void  App_TaskDelHook(OS_TCB *ptcb)
 #if OS_VERSION >= 251
 void  App_TaskIdleHook(void)
 {
-
+	currTimeOfIdle = OSTimeGet();
+	if (currTimeOfIdle > lastTimeOfIdle + 50)
+	{
+		lastTimeOfIdle = currTimeOfIdle;
+		doOperationOnArrayList(listOfAllTaskTime, showProblamaticTasks);
+	}
 }
 #endif
+
+static void showProblamaticTasks(OS_TCB* tcb)
+{
+	double proportion =  ((double)(tcb->YKtimeTheOsRun) / (double)currTimeOfIdle)*100;
+	char* name = 0;
+	switch (tcb->OSTCBPrio)
+	{
+	case MAP_MOVE_TASK_PRIO:
+		name = "Map moving task";
+		break;
+	case KEYBOARD_TASK_PRIO:
+		name = "keyboard control task";
+		break;
+	case GRAPHIC_TASK_PRIO:
+		name = "graphic task";
+		break;
+	case SCORE_TASK_PRIO:
+		name = "score task";
+		break;
+	
+	}
+	if (name != 0) 
+		printf("task with name %s have %f time of cpu", name, proportion);
+	else
+		printf("task with proportion %d have %f time of cpu", tcb->OSTCBPrio, proportion);
+
+}
 
 /*
 *********************************************************************************************************
@@ -204,20 +243,15 @@ void  App_TaskReturnHook(OS_TCB  *ptcb)
 */
 
 
-int numberOfLastTick = 0;
-int numberOfTimeToAdd;
-int tempTime;
-
-static void helperToFindTheTask(void* rawTask);
 
 #if OS_TASK_SW_HOOK_EN > 0
 void  App_TaskSwHook(void)
 {
-	numberOfTimeToAdd = (tempTime = OSTimeGet()) - numberOfLastTick;
+	numberOfTimeToAddContextSwitch = (tempTimeContextSwitch = OSTimeGet()) - numberOfLastTickContextSwitch;
 	
-	OSTCBCur->YKtimeTheOsRun += numberOfTimeToAdd;
+	OSTCBCur->YKtimeTheOsRun += numberOfTimeToAddContextSwitch;
 
-	numberOfLastTick = tempTime;
+	numberOfLastTickContextSwitch = tempTimeContextSwitch;
 }
 #endif
 
