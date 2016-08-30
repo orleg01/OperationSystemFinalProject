@@ -93,6 +93,8 @@
     <ClCompile Include="..\app.c" />
     <ClCompile Include="..\app_hooks.c" />
     <ClCompile Include="..\Mat3d.c" />
+    <ClCompile Include="ArrayList.c" />
+    <ClCompile Include="ArrayList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\uC-CPU\cpu_cache.h" />

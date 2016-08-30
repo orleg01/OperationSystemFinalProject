@@ -40,6 +40,9 @@
     <Filter Include="App\Math">
       <UniqueIdentifier>{7a9ef24b-aca0-4942-92a7-f1382c1517b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\DataManagers">
+      <UniqueIdentifier>{98bc5c47-9746-4322-9c6a-3d170e4a7b1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -110,6 +113,12 @@
     </ClCompile>
     <ClCompile Include="..\Mat3d.c">
       <Filter>App\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayList.h">
+      <Filter>App\DataManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayList.c">
+      <Filter>App\DataManagers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
