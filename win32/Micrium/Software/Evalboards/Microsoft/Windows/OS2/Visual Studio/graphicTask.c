@@ -16,10 +16,9 @@ void graphicTask(void *p_arg)
 	if (window == NULL)
 		return;
 
-	// Game loop
+	// Game Renderer loop
 	while (!glfwWindowShouldClose(window))
 	{
-
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 		OSTimeDlyHMSM(0, 0, 0, 1000 / FRAMES_PER_SECOND);
