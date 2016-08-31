@@ -52,6 +52,9 @@
     <Filter Include="App\Tasks">
       <UniqueIdentifier>{4bac186a-a3fd-4945-b13b-fd0046233bf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="App\GraphicTask\images">
+      <UniqueIdentifier>{d2104330-f5fb-47df-a6db-fd2745cabf1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\app.c">
@@ -206,5 +209,19 @@
     <ClInclude Include="inputTask.h">
       <Filter>App\Tasks</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bird_down.png">
+      <Filter>App\GraphicTask\images</Filter>
+    </Image>
+    <Image Include="bird_Ide.png">
+      <Filter>App\GraphicTask\images</Filter>
+    </Image>
+    <Image Include="bird_up.png">
+      <Filter>App\GraphicTask\images</Filter>
+    </Image>
+    <Image Include="tower.png">
+      <Filter>App\GraphicTask\images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

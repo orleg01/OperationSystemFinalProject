@@ -139,6 +139,7 @@ void pushItemToEndArrayList(ArrayList* list, void* data)
 		newLast->pervius = currLast;
 		currLast->next = newLast;
 		list->endOfArray = newLast;
+		list->elementInList++;
 	}
 }
 

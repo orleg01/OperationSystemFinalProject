@@ -123,6 +123,12 @@
     <ClInclude Include="imageObject.h" />
     <ClInclude Include="inputTask.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="bird_down.png" />
+    <Image Include="bird_Ide.png" />
+    <Image Include="bird_up.png" />
+    <Image Include="tower.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

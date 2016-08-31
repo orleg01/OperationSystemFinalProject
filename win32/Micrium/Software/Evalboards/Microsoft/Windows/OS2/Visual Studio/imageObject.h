@@ -11,9 +11,12 @@ typedef struct
 	vec3 position;
 	float sizeX;
 	float sizeY;
+	int op;
+	float startPos;
+	float angle;
 }imageObject_t;
 
-imageObject_t initImageObject(int textureId, vec3 position, float sizeX, float sizeY);
+imageObject_t initImageObject(int textureId, vec3 position, float sizeX, float sizeY , int op , float startPos);
 void draw(imageObject_t* obj);
 void initImageObjectShader();
 int initTexture(const char* imageName);

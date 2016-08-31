@@ -52,7 +52,7 @@
 */
 
 static  CPU_STK  AppTaskStartStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  GraphicTasckStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  GraphicTaskStk[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -91,13 +91,13 @@ int  main (void)
         (INT16U         )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
 	OSTaskCreateExt((void(*)(void *))graphicTask,              /* Create the start task                                */
-		(void          *)0,
-		(OS_STK        *)&GraphicTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(void          *) 0,
+		(OS_STK        *)&GraphicTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U			) GRAPHIC_TASK_PRIO,
 		(INT16U			) GRAPHIC_TASK_PRIO,
-		(OS_STK        *)&GraphicTasckStk[0],
+		(OS_STK        *)&GraphicTaskStk[0],
 		(INT32U			) APP_TASK_START_STK_SIZE,
-		(void          *)0,
+		(void          *) 0,
 		(INT16U			)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
     OSStart();                                                  /* Start multitasking (i.e. give control to uC/OS-II).  */

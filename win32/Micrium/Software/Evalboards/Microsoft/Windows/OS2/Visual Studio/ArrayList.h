@@ -1,5 +1,3 @@
-
-
 #ifndef __ARRAY_LIST_H
 #define __ARRAY_LIST_H
 
