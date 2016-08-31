@@ -52,10 +52,10 @@
 */
 
 static  CPU_STK  AppTaskStartStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  GraphicTasckStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  KeyBoardTasckStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  MapMovingTasckStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  ScoreTasckStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  GraphicTaskStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  KeyBoardTaskStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  MapMovingTaskStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  ScoreTaskStk[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -136,30 +136,30 @@ int  main (void)
 
 	OSTaskCreateExt((void(*)(void **))inputTask,              /* Create the start task                                */
 		(void          *)0,
-		(OS_STK        *)&KeyBoardTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(OS_STK        *)&KeyBoardTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U)KEYBOARD_TASK_PRIO,
 		(INT16U)KEYBOARD_TASK_PRIO,
-		(OS_STK        *)&KeyBoardTasckStk[0],
+		(OS_STK        *)&KeyBoardTaskStk[0],
 		(INT32U)APP_TASK_START_STK_SIZE,
 		(void          *)0,
 		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
 	OSTaskCreateExt((void(*)(void *))mapMovingTask,              /* Create the start task                                */
 		(void          *)0,
-		(OS_STK        *)&MapMovingTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(OS_STK        *)&MapMovingTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U)MAP_MOVE_TASK_PRIO,
 		(INT16U)MAP_MOVE_TASK_PRIO,
-		(OS_STK        *)&MapMovingTasckStk[0],
+		(OS_STK        *)&MapMovingTaskStk[0],
 		(INT32U)APP_TASK_START_STK_SIZE,
 		(void          *)0,
 		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
 	OSTaskCreateExt((void(*)(void *))scoreTask,              /* Create the start task                                */
 		(void          *)0,
-		(OS_STK        *)&ScoreTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(OS_STK        *)&ScoreTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U)SCORE_TASK_PRIO,
 		(INT16U)SCORE_TASK_PRIO,
-		(OS_STK        *)&ScoreTasckStk[0],
+		(OS_STK        *)&ScoreTaskStk[0],
 		(INT32U)APP_TASK_START_STK_SIZE,
 		(void          *)0,
 		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
