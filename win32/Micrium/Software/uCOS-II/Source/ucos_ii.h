@@ -599,6 +599,7 @@ typedef struct os_tcb {
     INT8U            OSTCBStat;             /* Task      status                                        */
     INT8U            OSTCBStatPend;         /* Task PEND status                                        */
     INT8U            OSTCBPrio;             /* Task priority (0 == highest)                            */
+	INT32U			 YKtimeTheOsRun;         /*how much time the task run in my project*/
 
     INT8U            OSTCBX;                /* Bit position in group  corresponding to task priority   */
     INT8U            OSTCBY;                /* Index into ready table corresponding to task priority   */

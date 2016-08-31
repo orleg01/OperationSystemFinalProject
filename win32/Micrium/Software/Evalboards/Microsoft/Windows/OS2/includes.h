@@ -56,5 +56,8 @@
                                                                 /* --------------------- uC/OS-III -------------------- */
 #include  <os.h>
 
-																/* --------------------- added the graphic task --------*/
+																/* --------------------- added the external task --------*/
 #include "Visual Studio\graphicTask.h"
+#include "Visual Studio\inputTask.h"
+#include "Visual Studio\mapMovingTask.h"
+#include "Visual Studio\scoreTask.h"

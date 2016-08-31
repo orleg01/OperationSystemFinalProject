@@ -52,7 +52,10 @@
 */
 
 static  CPU_STK  AppTaskStartStk[APP_TASK_START_STK_SIZE];
-static  CPU_STK  GraphicTaskStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  GraphicTasckStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  KeyBoardTasckStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  MapMovingTasckStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  ScoreTasckStk[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -76,9 +79,40 @@ static  void  AppTaskStart(void  *p_arg);
 *********************************************************************************************************
 */
 
+#include "Visual Studio\ArrayList.h"
+
+int killTheGame = 0;
+
+OS_EVENT* newScoreMailBox;
+OS_EVENT* whereTheCameraStandsMailBox;
+OS_EVENT* waitForWindowToInitilaizeSemaphore;
+OS_EVENT* sendIfSpacePressedMailBox;
+
+ArrayList* listOfAllTaskTime; // real item in the context switch hook
+
+static void OsEventInit()
+{
+
+	listOfAllTaskTime = createArrayList(); // add task when create in create task hook 
+
+
+	if ((newScoreMailBox = OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
+		if ((whereTheCameraStandsMailBox = OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
+			if ((sendIfSpacePressedMailBox = OSMboxCreate(sendIfSpacePressedMailBox)) != (OS_EVENT *)0)
+				if ((waitForWindowToInitilaizeSemaphore = OSSemCreate(0)) != (OS_EVENT *)0)
+					return;
+
+	printf("cannot initialize the project!!!\n");
+	killTheGame = 1;
+
+}
+
+
 int  main (void)
 {
     OSInit();                                                   /* Init uC/OS-II.                                       */
+
+	OsEventInit();
 
     OSTaskCreateExt((void(*)(void *))AppTaskStart,              /* Create the start task                                */
         (void          *) 0,
@@ -99,6 +133,36 @@ int  main (void)
 		(INT32U			) APP_TASK_START_STK_SIZE,
 		(void          *) 0,
 		(INT16U			)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
+	OSTaskCreateExt((void(*)(void **))inputTask,              /* Create the start task                                */
+		(void          *)0,
+		(OS_STK        *)&KeyBoardTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(INT8U)KEYBOARD_TASK_PRIO,
+		(INT16U)KEYBOARD_TASK_PRIO,
+		(OS_STK        *)&KeyBoardTasckStk[0],
+		(INT32U)APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
+	OSTaskCreateExt((void(*)(void *))mapMovingTask,              /* Create the start task                                */
+		(void          *)0,
+		(OS_STK        *)&MapMovingTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(INT8U)MAP_MOVE_TASK_PRIO,
+		(INT16U)MAP_MOVE_TASK_PRIO,
+		(OS_STK        *)&MapMovingTasckStk[0],
+		(INT32U)APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
+	OSTaskCreateExt((void(*)(void *))scoreTask,              /* Create the start task                                */
+		(void          *)0,
+		(OS_STK        *)&ScoreTasckStk[APP_TASK_START_STK_SIZE - 1],
+		(INT8U)SCORE_TASK_PRIO,
+		(INT16U)SCORE_TASK_PRIO,
+		(OS_STK        *)&ScoreTasckStk[0],
+		(INT32U)APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
     OSStart();                                                  /* Start multitasking (i.e. give control to uC/OS-II).  */
 }
@@ -122,7 +186,7 @@ int  main (void)
 
 static  void  AppTaskStart (void *p_arg)
 {
-    OS_ERR  err;
+    //OS_ERR  err;
 
    (void)p_arg;
 

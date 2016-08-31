@@ -138,6 +138,12 @@
     <ClCompile Include="inputTask.c">
       <Filter>App\Tasks</Filter>
     </ClCompile>
+    <ClCompile Include="mapMovingTask.c">
+      <Filter>App\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="scoreTask.c">
+      <Filter>App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -207,6 +213,12 @@
       <Filter>App\DataManager</Filter>
     </ClInclude>
     <ClInclude Include="inputTask.h">
+      <Filter>App\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="mapMovingTask.h">
+      <Filter>App\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="scoreTask.h">
       <Filter>App\Tasks</Filter>
     </ClInclude>
   </ItemGroup>
