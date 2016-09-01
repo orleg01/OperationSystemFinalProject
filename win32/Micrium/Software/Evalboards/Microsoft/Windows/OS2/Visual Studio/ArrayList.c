@@ -153,7 +153,7 @@ void freeArrayList(ArrayList* list)
 	for (i = 0; i < list->elementInList; i++)
 	{
 		tempNode = operateNode->next;
-		free(operateNode->data);
+		free(operateNode);
 		operateNode = tempNode;
 	}
 

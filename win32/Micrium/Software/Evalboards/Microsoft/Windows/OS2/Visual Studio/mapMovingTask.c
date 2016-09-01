@@ -14,8 +14,8 @@ static double wantedXDeltaTime = 0.1;
 
 
 
-#define X_DELTA_MIN 0.05
-#define X_DELTA_MAX (double)0.4
+#define X_DELTA_MIN 0.0075
+#define X_DELTA_MAX (double)0.03
 #define NUMBER_OF_TICK_BETWEEN_EACH_VALOCITY_AIM_CHANGE  50 // check if needed to change while play
 
 static void printHelpfullMessage(INT8U err)
@@ -23,10 +23,10 @@ static void printHelpfullMessage(INT8U err)
 	switch (err)
 	{
 	case OS_ERR_MBOX_FULL:
-		printf("map moving task -> message box isnt empty cannot send the new variable at");
+		//printf("map moving task -> message box isnt empty cannot send the new variable at\n");
 		return;
 	default:
-		printf("critic problem at map moving task");
+		printf("critic problem at map moving task\n");
 		OSSchedLock();
 		killTheGame = 1;
 		OSSchedUnlock();
@@ -55,6 +55,8 @@ void mapMovingTask()
 	INT8U error;
 
 	srand((unsigned)time(&t));
+
+	getNewDeltaTime();
 
 	while (!killTheGame)
 	{

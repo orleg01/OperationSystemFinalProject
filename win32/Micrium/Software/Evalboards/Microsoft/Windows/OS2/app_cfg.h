@@ -54,6 +54,7 @@
 #define  KEYBOARD_TASK_PRIO								   30u
 #define  MAP_MOVE_TASK_PRIO								   40u
 #define  SCORE_TASK_PRIO								   50u
+#define  COLOR_TASK_PRIO								   55u
 
 /*
 *********************************************************************************************************

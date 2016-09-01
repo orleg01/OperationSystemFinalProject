@@ -56,6 +56,7 @@ static  CPU_STK  GraphicTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  KeyBoardTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  MapMovingTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  ScoreTaskStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  BackGroundStk[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -87,6 +88,7 @@ OS_EVENT* newScoreMailBox;
 OS_EVENT* whereTheCameraStandsMailBox;
 OS_EVENT* waitForWindowToInitilaizeSemaphore;
 OS_EVENT* sendIfSpacePressedMailBox;
+OS_EVENT* sendNewBackGroundColoeMailBox;
 
 ArrayList* listOfAllTaskTime; // real item in the context switch hook
 
@@ -97,11 +99,12 @@ static void OsEventInit()
 	
 	OSInit();                              /* Init uC/OS-II.   */
 
-	if ((newScoreMailBox = OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
-		if ((whereTheCameraStandsMailBox = OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
-			if ((sendIfSpacePressedMailBox = OSMboxCreate(sendIfSpacePressedMailBox)) != (OS_EVENT *)0)
-				if ((waitForWindowToInitilaizeSemaphore = OSSemCreate(0)) != (OS_EVENT *)0)
-					return;
+	if ((newScoreMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
+		if ((whereTheCameraStandsMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
+			if ((sendIfSpacePressedMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
+				if ((sendNewBackGroundColoeMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
+					if ((waitForWindowToInitilaizeSemaphore = OSSemCreate(0)) != (OS_EVENT *)0)
+						return;
 
 	printf("cannot initialize the project!!!\n");
 	killTheGame = 1;
@@ -111,7 +114,8 @@ static void OsEventInit()
 
 int  main (void)
 {
-	
+	GLFWwindow* window;
+
 	OsEventInit();                                 
 	
 
@@ -126,7 +130,7 @@ int  main (void)
         (INT16U         )(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
 	OSTaskCreateExt((void(*)(void *))graphicTask,              /* Create the start task                                */
-		(void          *) 0,
+		(void          *) &window,
 		(OS_STK        *)&GraphicTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U			) GRAPHIC_TASK_PRIO,
 		(INT16U			) GRAPHIC_TASK_PRIO,
@@ -135,8 +139,8 @@ int  main (void)
 		(void          *) 0,
 		(INT16U			)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
 
-	OSTaskCreateExt((void(*)(void **))inputTask,              /* Create the start task                                */
-		(void          *)0,
+	OSTaskCreateExt((void(*)(void *))inputTask,              /* Create the start task                                */
+		(void          *)&window,
 		(OS_STK        *)&KeyBoardTaskStk[APP_TASK_START_STK_SIZE - 1],
 		(INT8U)KEYBOARD_TASK_PRIO,
 		(INT16U)KEYBOARD_TASK_PRIO,
@@ -161,6 +165,16 @@ int  main (void)
 		(INT8U)SCORE_TASK_PRIO,
 		(INT16U)SCORE_TASK_PRIO,
 		(OS_STK        *)&ScoreTaskStk[0],
+		(INT32U)APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
+	OSTaskCreateExt((void(*)(void *))colorChangeTask,              /* Create the start task                                */
+		(void          *)0,
+		(OS_STK        *)&BackGroundStk[APP_TASK_START_STK_SIZE - 1],
+		(INT8U)COLOR_TASK_PRIO,
+		(INT16U)COLOR_TASK_PRIO,
+		(OS_STK        *)&BackGroundStk[0],
 		(INT32U)APP_TASK_START_STK_SIZE,
 		(void          *)0,
 		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));

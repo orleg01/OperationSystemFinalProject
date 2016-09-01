@@ -99,6 +99,7 @@
     <ClCompile Include="inputTask.c" />
     <ClCompile Include="mapMovingTask.c" />
     <ClCompile Include="scoreTask.c" />
+    <ClCompile Include="screenColorChange.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\uC-CPU\cpu_cache.h" />
@@ -126,6 +127,7 @@
     <ClInclude Include="inputTask.h" />
     <ClInclude Include="mapMovingTask.h" />
     <ClInclude Include="scoreTask.h" />
+    <ClInclude Include="screenColorChange.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="bird_down.png" />

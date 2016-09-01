@@ -153,7 +153,7 @@ void  App_TaskDelHook(OS_TCB *ptcb)
 void  App_TaskIdleHook(void)
 {
 	currTimeOfIdle = OSTimeGet();
-	if (currTimeOfIdle > lastTimeOfIdle + 50)
+	if (currTimeOfIdle > lastTimeOfIdle + 500)
 	{
 		lastTimeOfIdle = currTimeOfIdle;
 		doOperationOnArrayList(listOfAllTaskTime, showProblamaticTasks);
@@ -179,12 +179,15 @@ static void showProblamaticTasks(OS_TCB* tcb)
 	case SCORE_TASK_PRIO:
 		name = "score task";
 		break;
+	case COLOR_TASK_PRIO:
+		name = "background color task";
+		break;
 	
 	}
 	if (name != 0) 
-		printf("task with name %s have %f time of cpu", name, proportion);
+		printf("task with name %s have %f time of cpu\n", name, proportion);
 	else
-		printf("task with proportion %d have %f time of cpu", tcb->OSTCBPrio, proportion);
+		printf("task with priority %d have %f time of cpu\n", tcb->OSTCBPrio, proportion);
 
 }
 
