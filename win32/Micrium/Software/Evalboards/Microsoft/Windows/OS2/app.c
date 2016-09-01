@@ -94,7 +94,8 @@ static void OsEventInit()
 {
 
 	listOfAllTaskTime = createArrayList(); // add task when create in create task hook 
-
+	
+	OSInit();                              /* Init uC/OS-II.   */
 
 	if ((newScoreMailBox = OSMboxCreate(newScoreMailBox)) != (OS_EVENT *)0)
 		if ((whereTheCameraStandsMailBox = OSMboxCreate(whereTheCameraStandsMailBox)) != (OS_EVENT *)0)
@@ -110,9 +111,9 @@ static void OsEventInit()
 
 int  main (void)
 {
-    OSInit();                                                   /* Init uC/OS-II.                                       */
-
-	OsEventInit();
+	
+	OsEventInit();                                 
+	
 
     OSTaskCreateExt((void(*)(void *))AppTaskStart,              /* Create the start task                                */
         (void          *) 0,
