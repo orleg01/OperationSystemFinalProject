@@ -139,7 +139,6 @@ void graphicTask(void *p_arg)
 
 			if (isCollided || birdHeight < -HEIGHT / 2 - BIRD_SIZE)
 			{
-				APP_TRACE("%d.collision\n", collisions);
 				isCollided = 0;
 				collisions++;
 				break;
@@ -157,7 +156,6 @@ void graphicTask(void *p_arg)
 
 GLFWwindow* initWindow()
 {
-	APP_TRACE("Starting GLFW context, OpenGL 3.3\n");
 	// Init GLFW
 	glfwInit();
 	// Set all the required options for GLFW
@@ -170,7 +168,7 @@ GLFWwindow* initWindow()
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", NULL, NULL);
 	if (window == NULL)
 	{
-		APP_TRACE("Failed to create GLFW window\n");
+		sendMassage(FAIL_TO_CREATE_GLFW_WINDOW);
 		glfwTerminate();
 		return NULL;
 	}
@@ -180,7 +178,7 @@ GLFWwindow* initWindow()
 	// Initialize GLEW to setup the OpenGL Function pointers
 	if (glewInit() != GLEW_OK)
 	{
-		APP_TRACE("Failed to initialize GLEW\n");
+		sendMassage(FAILED_TO_INIT_GLFW);
 		return NULL;
 	}
 
@@ -249,9 +247,7 @@ void spaceChecker()
 	}
 	else
 	{
-
-		printf("some argument is null check your variables");
-
+		sendMassage(SOME_ARGUMENT_IS_NULL);
 	}
 }
 
@@ -272,9 +268,7 @@ void scoreChecker()
 	}
 	else
 	{
-
-		printf("some argument is null check your variables");
-
+		sendMassage(SOME_ARGUMENT_IS_NULL);
 	}
 }
 
@@ -295,9 +289,7 @@ void DistanceChecker()
 	}
 	else
 	{
-
-		printf("some argument is null check your variables");
-
+		sendMassage(SOME_ARGUMENT_IS_NULL);
 	}
 }
 
@@ -319,9 +311,7 @@ void ColorOfBackGround()
 	}
 	else
 	{
-
-		printf("some argument is null check your variables");
-
+		sendMassage(SOME_ARGUMENT_IS_NULL);
 	}
 
 }

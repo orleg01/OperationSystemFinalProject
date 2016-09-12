@@ -23,7 +23,7 @@ void scoreTask()
 		if (err != OS_ERR_NONE && err != OS_ERR_MBOX_FULL)
 		{
 		
-			printf("critic problem in score task with the message box");
+			sendMassage(MESSAGE_BOX_FULL_SCORE);
 			killTheGame = 1;
 			break;
 		}
@@ -31,6 +31,6 @@ void scoreTask()
 		OSTimeDlyHMSM(0, 0, 0, MILIS_TO_WAIT_BETWEEN_EACH_LOOP);
 	}
 
-	printf("score task is finished");
+	sendMassage(SCORE_FINISH);
 
 }

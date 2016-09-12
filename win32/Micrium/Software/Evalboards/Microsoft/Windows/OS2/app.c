@@ -89,8 +89,12 @@ OS_EVENT* whereTheCameraStandsMailBox;
 OS_EVENT* waitForWindowToInitilaizeSemaphore;
 OS_EVENT* sendIfSpacePressedMailBox;
 OS_EVENT* sendNewBackGroundColoeMailBox;
+extern OS_EVENT* errorQ;
 
 ArrayList* listOfAllTaskTime; // real item in the context switch hook
+
+const int numberOfTasks = 6;
+extern int* messageQueStorage[];
 
 static void OsEventInit()
 {
@@ -104,6 +108,7 @@ static void OsEventInit()
 			if ((sendIfSpacePressedMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
 				if ((sendNewBackGroundColoeMailBox = OSMboxCreate(NULL)) != (OS_EVENT *)0)
 					if ((waitForWindowToInitilaizeSemaphore = OSSemCreate(0)) != (OS_EVENT *)0)
+						if ((errorQ =  OSQCreate(messageQueStorage, numberOfTasks)) != (OS_EVENT *)0)
 						return;
 
 	printf("cannot initialize the project!!!\n");

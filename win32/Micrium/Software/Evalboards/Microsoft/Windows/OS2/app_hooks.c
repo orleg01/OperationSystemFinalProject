@@ -165,6 +165,7 @@ static void showProblamaticTasks(OS_TCB* tcb)
 {
 	double proportion =  ((double)(tcb->YKtimeTheOsRun) / (double)currTimeOfIdle)*100;
 	char* name = 0;
+
 	switch (tcb->OSTCBPrio)
 	{
 	case MAP_MOVE_TASK_PRIO:
@@ -182,8 +183,8 @@ static void showProblamaticTasks(OS_TCB* tcb)
 	case COLOR_TASK_PRIO:
 		name = "background color task";
 		break;
-	
 	}
+
 	if (name != 0) 
 		printf("task with name %s have %f time of cpu\n", name, proportion);
 	else

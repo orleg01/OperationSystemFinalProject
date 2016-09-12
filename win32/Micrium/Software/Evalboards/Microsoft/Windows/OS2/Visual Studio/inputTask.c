@@ -40,8 +40,6 @@ void inputTask(void* rawWindow)
 	}
 	else
 	{
-		printf("couldnt get the window! - in input task error number %d \n" , getWindowError);
-		
 		OSSchedLock();
 		killTheGame = 1;
 		OSSchedUnlock(); 
@@ -61,11 +59,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		{
 			if ((error = OSMboxPost(sendIfSpacePressedMailBox, (void*)1)) == OS_ERR_MBOX_FULL)
 			{
-				printf("mail box is full . cannot send that key is pressed \n"); // nothing too bad 
+				sendMassage(MAIL_BOX_IS_FULL);
 			}
 			else if (error == OS_ERR_PEVENT_NULL)
 			{
-				printf("message box didnt initialize in input task\n"); // something went awfull wrong
+				sendMassage(MESSAGE_BOX_DID_NOT_INIT);
 			}
 		}
 	}

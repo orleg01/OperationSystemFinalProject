@@ -90,7 +90,7 @@ void initImageObjectShader()
 	if (!success)
 	{
 		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		APP_TRACE("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n");
+		sendMassage(ERROR_SHADER_VERTEX_COMPILATION_FAILED);
 		APP_TRACE("%s\n",infoLog);
 	}
 	// Fragment shader
@@ -102,7 +102,7 @@ void initImageObjectShader()
 	if (!success)
 	{
 		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		APP_TRACE("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n");
+		sendMassage(ERROR_SHADER_FRAGMENT_COMPILATION_FAILED);
 		APP_TRACE("%s\n", infoLog);
 	}
 	// Link shaders
@@ -114,7 +114,7 @@ void initImageObjectShader()
 	glGetProgramiv(shaderImageObject, GL_LINK_STATUS, &success);
 	if (!success) {
 		glGetProgramInfoLog(shaderImageObject, 512, NULL, infoLog);
-		APP_TRACE("ERROR::SHADER::PROGRAM::LINKING_FAILED\n");
+		sendMassage(ERROR_SHADER_PROGRAM_LINKING_FAILED);
 		APP_TRACE("%s\n", infoLog);
 	}
 	glDeleteShader(vertexShader);

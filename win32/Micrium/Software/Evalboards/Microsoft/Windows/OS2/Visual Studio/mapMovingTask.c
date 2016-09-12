@@ -26,7 +26,7 @@ static void printHelpfullMessage(INT8U err)
 		//printf("map moving task -> message box isnt empty cannot send the new variable at\n");
 		return;
 	default:
-		printf("critic problem at map moving task\n");
+		sendMassage(MAP_CRITIC_PROBLEM);
 		OSSchedLock();
 		killTheGame = 1;
 		OSSchedUnlock();
@@ -36,7 +36,7 @@ static void printHelpfullMessage(INT8U err)
 static void getNewDeltaTime() 
 {
 	
-	printf("get new delta time aim at map moving task\n");
+	sendMassage(MAP_NEW_DELTA_TIME);
 
 	double tempNum = ((double)rand()/(double)RAND_MAX*(X_DELTA_MAX - X_DELTA_MIN)) + X_DELTA_MIN;
 
@@ -76,7 +76,7 @@ void mapMovingTask()
 		OSTimeDlyHMSM(0, 0, 0, TIME_OF_FRAME);
 	}
 
-	printf("map moving task as been closed!\n");
+	sendMassage(MAP_FINISH);
 
 
 }

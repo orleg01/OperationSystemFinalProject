@@ -62,3 +62,4 @@
 #include "Visual Studio\mapMovingTask.h"
 #include "Visual Studio\scoreTask.h"
 #include "Visual Studio\screenColorChange.h"
+#include "Visual Studio\messageTask.h"
