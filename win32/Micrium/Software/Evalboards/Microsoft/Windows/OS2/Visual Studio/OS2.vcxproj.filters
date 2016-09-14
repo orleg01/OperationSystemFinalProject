@@ -147,6 +147,9 @@
     <ClCompile Include="screenColorChange.c">
       <Filter>App\Tasks</Filter>
     </ClCompile>
+    <ClCompile Include="messageTask.c">
+      <Filter>App\Tasks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\app_cfg.h">
@@ -225,6 +228,9 @@
       <Filter>App\Tasks</Filter>
     </ClInclude>
     <ClInclude Include="screenColorChange.h">
+      <Filter>App\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="messageTask.h">
       <Filter>App\Tasks</Filter>
     </ClInclude>
   </ItemGroup>

@@ -49,12 +49,13 @@
 *********************************************************************************************************
 */
 
-#define  APP_TASK_START_PRIO                               4u
+#define  APP_TASK_START_PRIO                                4u
 #define  GRAPHIC_TASK_PRIO								   20u
 #define  KEYBOARD_TASK_PRIO								   30u
 #define  MAP_MOVE_TASK_PRIO								   40u
 #define  SCORE_TASK_PRIO								   50u
 #define  COLOR_TASK_PRIO								   55u
+#define  LOGGER_TASK_PRIO                                  57u
 
 /*
 *********************************************************************************************************

@@ -23,6 +23,7 @@ void inputTask(void* rawWindow)
 	INT8U getWindowError;
 
 	OSSemPend(waitForWindowToInitilaizeSemaphore, 0, &getWindowError); // need to delete the sem after using -> on time sem
+
 	//printf("%p\n", window);
 	if (getWindowError == OS_ERR_NONE)
 	{

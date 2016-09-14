@@ -121,5 +121,5 @@ void massageTask(void* p_arg)
 
 void sendMassage(int message)
 {
-	OSQPost(errorQ, message);
+	OSQPost(errorQ, (int*)message);
 }

@@ -57,6 +57,7 @@ static  CPU_STK  KeyBoardTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  MapMovingTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  ScoreTaskStk[APP_TASK_START_STK_SIZE];
 static  CPU_STK  BackGroundStk[APP_TASK_START_STK_SIZE];
+static  CPU_STK  LoggerTask[APP_TASK_START_STK_SIZE];
 
 /*
 *********************************************************************************************************
@@ -180,6 +181,16 @@ int  main (void)
 		(INT8U)COLOR_TASK_PRIO,
 		(INT16U)COLOR_TASK_PRIO,
 		(OS_STK        *)&BackGroundStk[0],
+		(INT32U)APP_TASK_START_STK_SIZE,
+		(void          *)0,
+		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));
+
+	OSTaskCreateExt((void(*)(void *)) massageTask,
+		(void          *)0,
+		(OS_STK        *)&LoggerTask[APP_TASK_START_STK_SIZE - 1],
+		(INT8U )LOGGER_TASK_PRIO,
+		(INT16U)LOGGER_TASK_PRIO,
+		(OS_STK        *)&LoggerTask[0],
 		(INT32U)APP_TASK_START_STK_SIZE,
 		(void          *)0,
 		(INT16U)(OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR));

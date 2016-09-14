@@ -12,8 +12,7 @@ static Color color;
 
 void colorChangeTask()
 {
-	time_t t;
-	srand((unsigned)time(&t));
+	srand((unsigned)time(NULL));
 
 	while (!killTheGame)
 	{
